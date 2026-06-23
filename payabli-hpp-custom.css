@@ -5,38 +5,25 @@
    ============================================================ */
 
 /* ------------------------------------------------------------
-   PRIMARY RULE (recommended starting point)
-   Targets the div with the inspected class combo, but only when
-   it wraps an anchor. This avoids nuking other plain-text blocks
-   that share the same Tailwind utility classes.
+   PRIMARY RULE (active)
+   The "Click Here" trigger is a <button>, not an <a>, so this
+   targets the div with the inspected class combo only when it
+   wraps a button. That keeps it from hiding other plain-text
+   blocks that share the same Tailwind utility classes.
    ------------------------------------------------------------ */
-div.text-base.font-medium.text-neutral-600:has(a) {
+div.text-base.font-medium.text-neutral-600:has(button) {
   display: none !important;
 }
-
-/* ------------------------------------------------------------
-   STRONGER, MORE DURABLE OPTION (preferred once you have the href)
-   Inspect the "Click Here" anchor and grab its href. Swap the
-   placeholder below for the real value (a partial match is fine),
-   then uncomment. This survives Tailwind class changes between
-   Payabli UI builds because it keys off the link target, not the
-   styling classes.
-   ------------------------------------------------------------ */
-/*
-div:has(> a[href*="REPLACE-WITH-PART-OF-THE-ONETIME-HREF"]) {
-  display: none !important;
-}
-*/
 
 /* ------------------------------------------------------------
    FALLBACK (last resort)
-   If :has() is ever unavailable in the rendering context, you can
-   hide the anchor itself. This leaves the surrounding text ("to
-   make One-Time Payment") visible, so only use it if the div-level
-   rules above do not apply.
+   If :has() is ever unavailable in the rendering context, this
+   hides the button itself. It leaves the surrounding text ("to
+   make One-Time Payment") visible, so only use it if the
+   div-level rule above does not apply.
    ------------------------------------------------------------ */
 /*
-div.text-base.font-medium.text-neutral-600 a {
+div.text-base.font-medium.text-neutral-600 button {
   display: none !important;
 }
 */
