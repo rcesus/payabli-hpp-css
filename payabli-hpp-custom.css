@@ -1,0 +1,42 @@
+/* ============================================================
+   Payabli Hosted Payment Page - Custom CSS
+   Purpose: hide the "Click Here to make One-Time Payment" link
+   Apply via: PageSettings.customCssUrl (point it at this hosted file)
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   PRIMARY RULE (recommended starting point)
+   Targets the div with the inspected class combo, but only when
+   it wraps an anchor. This avoids nuking other plain-text blocks
+   that share the same Tailwind utility classes.
+   ------------------------------------------------------------ */
+div.text-base.font-medium.text-neutral-600:has(a) {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------
+   STRONGER, MORE DURABLE OPTION (preferred once you have the href)
+   Inspect the "Click Here" anchor and grab its href. Swap the
+   placeholder below for the real value (a partial match is fine),
+   then uncomment. This survives Tailwind class changes between
+   Payabli UI builds because it keys off the link target, not the
+   styling classes.
+   ------------------------------------------------------------ */
+/*
+div:has(> a[href*="REPLACE-WITH-PART-OF-THE-ONETIME-HREF"]) {
+  display: none !important;
+}
+*/
+
+/* ------------------------------------------------------------
+   FALLBACK (last resort)
+   If :has() is ever unavailable in the rendering context, you can
+   hide the anchor itself. This leaves the surrounding text ("to
+   make One-Time Payment") visible, so only use it if the div-level
+   rules above do not apply.
+   ------------------------------------------------------------ */
+/*
+div.text-base.font-medium.text-neutral-600 a {
+  display: none !important;
+}
+*/
